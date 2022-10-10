@@ -1,14 +1,18 @@
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
+import mapModule from './map';
+import { MapState } from './map/state';
+import placesModule from './places';
+import { PlacesState } from './places/state';
 
-export default createStore({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
+
+export interface StateInterface {
+  places: PlacesState,
+  map: MapState,
+}
+
+export default createStore<StateInterface>({
   modules: {
+    places: placesModule,
+    map: mapModule
   }
-})
+});
